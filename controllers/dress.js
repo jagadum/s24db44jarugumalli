@@ -1,5 +1,5 @@
 var dress = require('../models/dress');
-// List of all dresss
+// List of all dress
 exports.dress_list = function(req, res) {
  res.send('NOT IMPLEMENTED: dress list');
 };
@@ -31,4 +31,18 @@ exports.dress_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     } 
    };
-   
+
+   // VIEWS
+// Handle a show all view
+exports.dress_view_all_Page = async function(req, res) {
+    try{
+    thedress = await dress.find();
+    res.render('dress', { title: 'dress Search Results', results: thedress });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    } 
+   };
+
+
