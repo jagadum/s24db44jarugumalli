@@ -45,4 +45,21 @@ exports.dress_view_all_Page = async function(req, res) {
     } 
    };
 
+// Handle dress create on POST.
+exports.dress_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new dress();
+    document.dress_type = req.body.dress_type;
+    document.dress_size = req.body.dress_size;
+    document.dress_price = req.body.dress_price;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    } 
+   }
+
 
