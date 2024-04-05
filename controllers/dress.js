@@ -62,4 +62,35 @@ exports.dress_create_post = async function(req, res) {
     } 
    }
 
+   // specific dress. lab-12 s-1
+exports.dress_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await dress.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   }
+   
+   //lab-12 s-2
+   exports.dress_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await dress.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.dress_type)
+            toUpdate.dress_type = req.body.dress_type;
+        if (req.body.dress_size) toUpdate.dress_size = req.body.dress_size;
+        if (req.body.dress_price) toUpdate.dress_price = req.body.dress_price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+        failed`);
+    }
+};
 
