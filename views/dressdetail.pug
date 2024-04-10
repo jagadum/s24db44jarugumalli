@@ -1,0 +1,24 @@
+extends layout
+block content
+  h1= title
+
+  if toShow == null
+    h2 No instance to show
+  else
+    - let dressid = toShow._id
+    - let dress_type = toShow.dress_type
+    - let dress_size = toShow.dress_size
+    - let dress_price = toShow.dress_price 
+    div
+      div.row
+        div.dressAttr.mr-3 dress ID is:
+        div #{dressid}
+      div.row
+        div.dressAttr.mr-3 dress Type is:
+        div #{dress_type}
+      div.row
+        div.dressAttr.mr-3 dress Size is:
+        div #{dress_size}
+      div.row
+        div.dressAttr.mr-3 dress Price is:
+        div #{dress_price}

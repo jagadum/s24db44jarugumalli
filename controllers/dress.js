@@ -94,3 +94,76 @@ exports.dress_detail = async function(req, res) {
     }
 };
 
+// s4 ad s5
+// Handle dress delete on DELETE.
+exports.dress_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await dress.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
+//s6
+
+// Handle a show one view with id specified by query
+exports.dress_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await dress.findById( req.query.id)
+    res.render('dressdetail',
+    { title: 'dress Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+// s7
+
+exports.dress_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('dresscreate', { title: 'dress Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+//s8
+    
+exports.dress_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await dress.findById(req.query.id)
+    res.render('dressupdate', { title: 'dress Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    
+    //s9
+
+    exports.dress_delete_Page = async function (req, res) {
+        console.log("Delete view for id " + req.query.id)
+        try {
+            result = await dress.findById(req.query.id)
+            res.render('dressdelete', {
+                title: 'dress Delete', toShow:
+                    result
+            });
+        }
+        catch (err) {
+            res.status(500)
+            res.send(`{'error': '${err}'}`);
+        }
+    };
