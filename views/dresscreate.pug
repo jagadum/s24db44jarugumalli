@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  form(id='dressForm', action="/resource/dresscreat", method="POST")
+  form(id='dressForm', action="/resource/dress", method="POST")
     div.form-group
       label.dressAttr(for='dress_type') dress type
       input#dress_type(type='text', name='dress_type')

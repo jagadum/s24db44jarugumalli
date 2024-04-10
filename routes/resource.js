@@ -8,11 +8,11 @@ var dress_controller = require('../controllers/dress');
 router.get('/', api_controller.api);
 /// dress ROUTES ///
 // POST request for creating a dress. 
-router.post('/dresscreat', dress_controller.dress_create_post);
+router.post('/dress', dress_controller.dress_create_post);
 // DELETE request to delete dress.
-router.delete('/dressdelete/:id', dress_controller.dress_delete);
+router.delete('/dress/:id', dress_controller.dress_delete);
 // PUT request to update dress.
-router.put('/dressupdate/:id', dress_controller.dress_update_put);
+router.put('/dress/:id', dress_controller.dress_update_put);
 // GET request for one dress.
 router.get('/dress/:id', dress_controller.dress_detail);
 // GET request for list of all dress items.
