@@ -13,7 +13,7 @@ block content
         div.row(class='mb-2')
             div.mr-1 ID is
                 div #{dressid}
-                - let actionid = "/resource/dressUp/" + dressid
+                - let actionid = "/resource/dressupdate/" + dressid
                 form(id='dressForm', action= actionid, method="POST")
                     div.form-group
                         label.dressAttr(for='dress_type') Dress Type
