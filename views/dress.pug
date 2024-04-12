@@ -1,29 +1,45 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+  
+//-   div.container-fluid
+//-     div.row
+//-       -
+//-         let desss = results
+        
+//-       each dress,index in results
+//-         .col-sm-2 
+//-         div.col-sm-2(onclick=`buy(${index})`)
+        
+//-           p Dress Type: #{dress.dress_type}
+//-           p Size: #{dress.dress_size}
+//-           p Price: $#{dress.dress_price.toFixed(2)}
+
+//-           button.btn( class="btn-primary ml-1") Update
+//-           button.btn( class="btn-danger ml-1") Delete
+//-           button.btn( class="btn-info ml-1") inspect
+
+
+//-   a(href="/") Back to index
+
+//-     script. 
+//-         function buy(index) {
+//-             alert(`You purchased item ${index}`);
+//-         }
+
+
 extends layout
 
 block content
   h1= title
-  
-  div.container-fluid
-    div.row
-      -
-        let desss = results
-        
-      each dress,index in results
-        .col-sm-2 
-        div.col-sm-2(onclick=`buy(${index})`)
-        
-          p Dress Type: #{dress.dress_type}
-          p Size: #{dress.dress_size}
-          p Price: $#{dress.dress_price.toFixed(2)}
-
-          button.btn( class="btn-primary ml-1") Update
-          button.btn( class="btn-danger ml-1") Delete
-          button.btn( class="btn-info ml-1") inspect
-
-
-  a(href="/") Back to index
-
-    script. 
-        function buy(index) {
-            alert(`You purchased item ${index}`);
-        }
+  - let items = results;
+  div(class="container-fluid")
+  div(class="row m-1")
+    each item in items
+      - let destination = `dispatch(\"/dress/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item #{item.dress_type}(#{item.dress_size}) is #{item.dress_price}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+  script.
+    function dispatch(path){
+      window.location.href=path}
