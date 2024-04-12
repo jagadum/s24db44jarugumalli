@@ -1,6 +1,13 @@
 var express = require('express');
 const dress_controlers= require('../controllers/dress');
 var router = express.Router();
+const secured = (req, res, next) => {
+    if (req.user){
+    return next();
+    }
+    res.redirect("/login");
+    }
+    
 /* GET dress */
 
 router.get('/', dress_controlers.dress_view_all_Page);
@@ -30,4 +37,7 @@ router.get('/update', dress_controlers.dress_update_Page);
 router.get('/delete', dress_controlers.dress_delete_Page);
 
 
+
+ /* GET update dress page */
+router.get('/update', secured,dress_controlers.dress_update_Page);
 module.exports = router;

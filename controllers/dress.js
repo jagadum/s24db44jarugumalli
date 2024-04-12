@@ -45,7 +45,7 @@ exports.dress_view_all_Page = async function(req, res) {
     } 
    };
 
-// Handle dress create on POST.
+
 exports.dress_create_post = async function(req, res) {
     console.log(req.body)
     let document = new dress();
@@ -62,7 +62,7 @@ exports.dress_create_post = async function(req, res) {
     } 
    }
 
-   // specific dress. lab-12 s-1
+
 exports.dress_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
@@ -74,7 +74,7 @@ exports.dress_detail = async function(req, res) {
     }
    }
    
-   //lab-12 s-2
+
    exports.dress_update_put = async function (req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
     try {
@@ -94,8 +94,7 @@ exports.dress_detail = async function(req, res) {
     }
 };
 
-// s4 ad s5
-// Handle dress delete on DELETE.
+
 exports.dress_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
