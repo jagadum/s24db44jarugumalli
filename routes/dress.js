@@ -17,27 +17,11 @@ router.put('/', function(req, res) {
     else toUpdate.same = false;
     })
 
-// Delete
+
 router.get('/', dress_controlers.dress_delete );
-
-//s6
-/* GET detail dress page */
 router.get('/detail', dress_controlers.dress_view_one_Page);
-
-//s7
-/* GET create dress page */
 router.get('/create', dress_controlers.dress_create_Page);
-
-//s8
-/* GET create update page */
-router.get('/update', dress_controlers.dress_update_Page);
-
-//s9
-/* GET delete dress page */
 router.get('/delete', dress_controlers.dress_delete_Page);
-
-
-
- /* GET update dress page */
 router.get('/update', secured,dress_controlers.dress_update_Page);
+
 module.exports = router;
