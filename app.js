@@ -99,7 +99,7 @@ console.log("Connection to DB succeeded")});
 // We can seed the collection if needed on
 
 async function recreateDB(){
-// Delete everything
+await dress.deleteMany();
 let instance1 = new dress({dress_type: 'Casual', dress_size:'Medium', dress_price: 30});
 instance1.save().then(doc=>{
 console.log("First object saved")}
