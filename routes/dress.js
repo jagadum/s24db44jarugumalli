@@ -19,9 +19,9 @@ router.put('/', function(req, res) {
 
 
 router.get('/', dress_controlers.dress_delete );
-router.get('/detail', dress_controlers.dress_view_one_Page);
-router.get('/create', dress_controlers.dress_create_Page);
-router.get('/delete', dress_controlers.dress_delete_Page);
+router.get('/detail', secured,dress_controlers.dress_view_one_Page);
+router.get('/create', secured,dress_controlers.dress_create_Page);
+router.get('/delete', secured,dress_controlers.dress_delete_Page);
 router.get('/update', secured,dress_controlers.dress_update_Page);
 
 module.exports = router;
