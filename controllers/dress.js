@@ -32,8 +32,6 @@ exports.dress_list = async function(req, res) {
     } 
    };
 
-   // VIEWS
-// Handle a show all view
 exports.dress_view_all_Page = async function(req, res) {
     try{
     thedress = await dress.find();
